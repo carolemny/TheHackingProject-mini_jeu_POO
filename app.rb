@@ -25,5 +25,5 @@ def perform_v1
     puts
   end
 end
-perform_v1
 
+perform_v1

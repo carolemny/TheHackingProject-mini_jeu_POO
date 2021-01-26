@@ -9,8 +9,6 @@ class Player
   def show_state #permet d'afficher l'état d'un joueur
     if @life_points > 0
       puts "#{@name} a #{@life_points} point(s) de vie!"
-    else
-      puts "#{@name} est mort."
     end
   end
 
