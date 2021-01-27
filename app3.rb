@@ -15,6 +15,8 @@ def perform_v3
   puts "Bienvenue #{human_name}! Tu vas combattre avec nos super Bots. BONNE CHANCE !"
   puts
   while my_game.is_still_ongoing? == true
+    my_game.show_players
+    puts
     my_game.menu
     user_input = gets.chomp
     puts
@@ -24,8 +26,6 @@ def perform_v3
     my_game.enemies_attack
     puts "Appuie sur ENTREE pour continuer"
     gets.chomp
-    my_game.show_players
-    puts
     puts "          ***"
     puts
   end

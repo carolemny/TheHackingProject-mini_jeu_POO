@@ -15,6 +15,11 @@ class Game
   end
 
   def is_still_ongoing?
+    @enemies.each do |enemy|
+      if enemy.life_points <= 0
+        kill_player(enemy)
+      end
+    end
     if @enemies.length > 0 && @human_player.life_points > 0 #le jeu continue tant que le @human_player a encore des points de vie et qu'il reste des Player à combattre dans l’array @enemies
       return true
     else
@@ -24,7 +29,12 @@ class Game
 
   def show_players
     human_player.show_state
-    puts "Il reste #{@enemies.length} joueurs bots" #les bots sont au nombre de la taille de @enemies
+    @enemies.each do |enemy|
+      if enemy.life_points <= 0
+        kill_player(enemy)
+      end
+    end
+    puts "Il reste #{@enemies.length} joueur(s) bot(s)" #les bots sont au nombre de la taille de @enemies
   end
 
   def menu
@@ -33,6 +43,11 @@ class Game
     puts "\na - chercher une meilleure arme\ns - chercher à se soigner"
     puts
     puts "attaquer un joueur en vue :"
+    @enemies.each do |enemy|
+      if enemy.life_points <= 0
+        kill_player(enemy)
+      end
+    end
     @enemies.each_with_index do |enemy, index|
       print "#{index} - "
       enemy.show_state #si le enemy est mort il est retiré du @enemies, pas besoin d'affichage
